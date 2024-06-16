@@ -28,8 +28,6 @@
 %% @private
 -module(krb_proto).
 
--compile([{parse_transform, lager_transform}]).
-
 -include("krb_key_records.hrl").
 -include("KRB5.hrl").
 
@@ -179,9 +177,7 @@ decode(Data, [NextType | Rest]) ->
         {ok, Record0, Leftover} ->
             case Leftover of
                 <<>> -> ok;
-                _ ->
-                    lager:debug("garbage after asn.1 decoding (~p): ~p",
-                        [NextType, Leftover])
+                _ -> ok
             end,
             Record1 = post_decode(Record0),
             {ok, Record1};

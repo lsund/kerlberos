@@ -31,8 +31,6 @@
 
 -include("KRB5.hrl").
 
--compile([{parse_transform, lager_transform}]).
-
 -export([
     start_link/2,
     await/1,
@@ -106,7 +104,6 @@ done(state_timeout, die, S0 = #?MODULE{}) ->
 terminate(normal, _State, #?MODULE{}) ->
     ok;
 terminate(Why, State, #?MODULE{}) ->
-    lager:debug("terminating from ~p due to ~p", [State, Why]),
     ok.
 
 callback_mode() -> [state_functions, state_enter].

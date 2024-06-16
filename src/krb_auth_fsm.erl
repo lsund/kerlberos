@@ -31,8 +31,6 @@
 
 -include("KRB5.hrl").
 
--compile([{parse_transform, lager_transform}]).
-
 -export([
     start_link/2,
     await/1,
